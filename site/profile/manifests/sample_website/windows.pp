@@ -43,7 +43,7 @@ class profile::sample_website::windows
     recurse => true,
   }
 
-  file { "C:\inetpub\wwwroot\sample_website\index.html":
+  file { "C:/inetpub/wwwroot/sample_website/index.html":
     ensure  => file,
     content => epp('profile/index.html.epp'),
   }
