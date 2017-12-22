@@ -28,7 +28,7 @@ class profile::sample_website::windows
     action       => 'Allow',
     enabled      => 'yes',
     protocol     => 'TCP',
-    local_port   => "80",
+    local_port   => '80',
     display_name => 'HTTP Inbound',
     description  => 'Inbound rule for HTTP Server',
   }
