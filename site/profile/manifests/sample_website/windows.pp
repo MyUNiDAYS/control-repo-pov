@@ -1,8 +1,6 @@
 #
-class profile::sample_website::windows (
-    $doc_root,
-    $webserver_port,
-) {
+class profile::sample_website::windows
+    {
   require profile::iis
 
   # configure iis
@@ -14,8 +12,8 @@ class profile::sample_website::windows (
   }
 
   iis::manage_site { $::fqdn:
-    site_path  => $doc_root,
-    port       => $webserver_port,
+    site_path  => 'C:\inetpub\wwwroot\sample_website',
+    port       => '80',
     ip_address => '*',
     app_pool   => 'sample_website',
     require    => [
@@ -36,11 +34,11 @@ class profile::sample_website::windows (
   }
 
   # deploy website
-  $website_source_dir  = lookup('website_source_dir')
+  $website_source_dir  = 'puppet:///modules/profile/sample_website'
 
   file { $website_source_dir:
     ensure  => directory,
-    path    => $doc_root,
+    path    => 'C:\inetpub\wwwroot\sample_website',
     source  => $website_source_dir,
     recurse => true,
   }
